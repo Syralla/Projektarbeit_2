@@ -10,7 +10,7 @@ Der internationale Konzern entstand 1988 aus der Fusion des schwedischen Unterne
 
 
 
-\begin{figure}[ht]
+\begin{figure}[!hpt]
 	\centering
 	\makebox[\textwidth][c]{\includegraphics[width=1\textwidth]{img/ABB-Div.png}}%
 	
@@ -32,15 +32,44 @@ SAP SE hat eigens für ihr \ac{ERP}-System die Programmiersprache \ac{ABAP} entw
 
 
 
-\section{Dokumente im SAP}
+\section{Formulare im SAP}
+
 \subsection{Smart Forms}
 
-Um die Dokumentenerstellung im SAP zu vereinfachen wird seit dem 4.6C Release von SAP Smart Forms angeboten. Diese neue Technologie sollte vor allem dafür sorgen, dass für die neu Entwicklung und Anpassung von Dokumenten im SAP keine Experten mehr von Nöten sind.
+Um die Dokumentenerstellung im SAP zu vereinfachen wird seit dem 4.6C Release von SAP Smart Forms angeboten. Diese Technologie sollte vor allem dafür sorgen, dass für die neu Entwicklung und Anpassung von Formularen im SAP keine Experten mehr von Nöten sind. Neue Dokumente können größtenteils ohne Programmieraufwand erstellt bzw. angepasst werden. Als Hauptwerkzeug dient hierbei der Form Builder welcher mit grafischen Darstellungen unkompliziertes Arbeiten ermöglicht. Das erstellen und positionieren von neuen Elementen des Dokumentes vereinfacht zusätzlich der Form Painter, indem eine Art Vorschau des Dokumentes erstellt wird, durch welche das Layout des Formulars veranschaulicht wird.(Siehe Abbildung \ref{fig2}) 
+
+\begin{figure}[!h]
+	\centering
+	\makebox[\textwidth][c]{\includegraphics[width=1\textwidth]{img/Form-Painter.png}}%
+	
+	\caption{Smartforms - Form Painter}
+	\label{fig2}
+	
+\end{figure}   
+
+Die Formularentwicklung mit Smart Forms besteht aus drei Teilen. 
+
+\begin{itemize}
+	\item Ein Rahmenprogramm für die Beschaffung der benötigten Daten sowie den Start der Dokumenterstellung.
+	\item Das eigentliche Formular welches das Layout sowie den Inhalt des Dokumentes vorgibt.
+	\item Der Stil des Dokuments wie beispielsweise Schriftgröße, Zeilenabstand und weiteres.
+\end{itemize}
+
+Beim Aktivieren des Formulars wird im Hintergrund ein Funktionsbaustein erstellt, welcher die Schnittstelle zwischen der Datenbeschaffung und Ausgabe des Formulars darstellt.(Siehe Abbildung \ref{fig3})
+
+\begin{figure}[!h]
+	\centering
+	\makebox[\textwidth][c]{\includegraphics[width=1\textwidth]{img/Smartforms-trennung.png}}%
+	
+	\caption{Trennung von Daten und Formular}
+	\label{fig3}
+	
+\end{figure} 
 
 
 \subsection{Adobe PDF}
 
-
+Seit 15 Jahren arbeitet SAP nun schon mit Adobe zusammen um die nächste Art der Dokumentenerstellung im SAP voran zubringen: Interactive Adobe Forms
 
 
 \section{Langzeit-Lieferantenerklärung}
