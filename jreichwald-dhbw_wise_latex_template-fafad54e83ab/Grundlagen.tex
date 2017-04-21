@@ -1,5 +1,6 @@
 
 \chapter{Grundlagen}
+\label{ch:Grundlagen}
 
 
 \section{ABB}
@@ -23,55 +24,43 @@ Das Produktportfolio von ABB gliedert sich in vier Divisionen auf: Division Elec
 
 
 \section{SAP}
+SAP SE ist ein deutsches Software-Unternehmen mit Sitz in Walldorf. Als viertgrößter Softwareanbieter der Welt beschäftigt das Unternehmen weltweit mehr als 84 Tausend Mitarbeiter. SAP hat sich auf Ressourcenmanagement-Software spezialisiert. Das Hauseigene \ac{ERP}-System "`SAP"' findet in fast 50\% aller Unternehmen mit mehr als 500 Mitarbeitern Anwendung. Ein \ac{ERP}-System ist dafür da, Betriebswirtschaftliche Prozesse zu bündeln und verwalten. Dabei werden alle unternehmensrelevanten Ressourcen wie Personal, Kapital und Material geplant sowie gesteuert. 
+
+ABB nutzt als \ac{ERP} System die Standardsoftware SAP R/3. Eine Standardsoftware ist ein Produkt, welches die allgemeinen Anforderungen des Nutzers - in diesem Fall ABB - erfüllt und bei speziellen Anforderungen individuell angepasst werden kann. Die Firma SAP SE bietet verschiedene Modulare Lösungen an, welche einzeln genutzt werden können. Beispiele sind hierfür die \ac{SD}-, \ac{FI}-, \ac{MM}- und \ac{HR}-Module. 
+
+SAP SE hat eigens für ihr \ac{ERP}-System die Programmiersprache \ac{ABAP} entwickelt. Grundsätzlich ist \ac{ABAP} eine Mischung aus \ac{SQL}- und Java-Befehlen. Dabei ist  die Programmiersprache so optimiert, effizient mit großen Datenbanken gearbeitet werden kann. In den letzten Jahren wurde \ac{ABAP} in sofern weiterentwickelt, dass nun auch objektorientiertes Arbeiten ermöglicht wird. SAP ist zum größten Teil mit \ac{ABAP} programmiert, sodass Anpassungen und eigene Programme auch in \ac{ABAP} geschrieben werden müssen. 
 
 
 
-\ac{ERP} Standardsoftware SAP R/3, welche bei ABB zum Einsatz kommt. Eine Standardsoftware ist ein Produkt welches die allgemeinen Anforderungen des Nutzers, in diesem Fall ABB, erfüllt und bei speziellen Anforderungen individuell angepasst werden kann. Die Firma SAP SE bietet verschiedene Modulare Lösungen an, welche einzeln genutzt werden können. Beispiele sind hierfür das \ac{SD}-, \ac{FI}-, \ac{MM}- und \ac{HR}-Modul. \\ 
-
-SAP SE hat eigens für ihr \ac{ERP}-System die Programmiersprache \ac{ABAP} entwickelt. Mit Hilfe dieser w
 
 
+\section{Interactive Forms by Adobe}
 
-\section{Formulare im SAP}
+Seit 2002 arbeitet SAP mit der Software Firma Adobe zusammen, um eine neue Art der Dokumenten-Erstellung im SAP zu schaffen. Aus dieser Zusammenarbeit entstanden die "`Interactive Forms by Adobe"', welche seit Jahren den Standard für die PDF\footnote{\ac{PDF} ist ein plattformunabhängiges Dateiformat, entwickelt von Adobe}-Erstellung in SAP bilden. Trotz dessen, wird diese Technologie bei ABB erst seit kurzem eingesetzt.
 
-\subsection{Smart Forms}
+Neue PDF-Dokumente können größtenteils ohne Programmieraufwand erstellt bzw. angepasst werden. Als Hauptwerkzeug dient hierbei der Adobe Lifecycle Designer, welcher mit Hilfe von grafischen Darstellungen einfacheres Arbeiten ermöglicht.
 
-Um die Dokumentenerstellung im SAP zu vereinfachen wird seit dem 4.6C Release von SAP Smart Forms angeboten. Diese Technologie sollte vor allem dafür sorgen, dass für die neu Entwicklung und Anpassung von Formularen im SAP keine Experten mehr von Nöten sind. Neue Dokumente können größtenteils ohne Programmieraufwand erstellt bzw. angepasst werden. Als Hauptwerkzeug dient hierbei der Form Builder welcher mit grafischen Darstellungen unkompliziertes Arbeiten ermöglicht. Das erstellen und positionieren von neuen Elementen des Dokumentes vereinfacht zusätzlich der Form Painter, indem eine Art Vorschau des Dokumentes erstellt wird, durch welche das Layout des Formulars veranschaulicht wird.(Siehe Abbildung \ref{fig2}) 
+   
 
-\begin{figure}[!h]
-	\centering
-	\makebox[\textwidth][c]{\includegraphics[width=1\textwidth]{img/Form-Painter.png}}%
-	
-	\caption{Smartforms - Form Painter}
-	\label{fig2}
-	
-\end{figure}   
-
-Die Formularentwicklung mit Smart Forms besteht aus drei Teilen. 
+Die Erstellung von Adobe PDFs in SAP besteht aus drei Teilen:
 
 \begin{itemize}
-	\item Ein Rahmenprogramm für die Beschaffung der benötigten Daten sowie den Start der Dokumenterstellung.
-	\item Das eigentliche Formular welches das Layout sowie den Inhalt des Dokumentes vorgibt.
-	\item Der Stil des Dokuments wie beispielsweise Schriftgröße, Zeilenabstand und weiteres.
+	\item Eine Schnittstelle, in welcher die Daten und Einstellungen der PDF festgelegt sind.
+	\item Das eigentliche Formular, welches das Layout sowie den Inhalt des Dokumentes vorgibt.
+	\item Ein Druckprogramm, welches die Schnittstelle mit dem Formular verbindet und die PDF druckt.
 \end{itemize}
 
-Beim Aktivieren des Formulars wird im Hintergrund ein Funktionsbaustein erstellt, welcher die Schnittstelle zwischen der Datenbeschaffung und Ausgabe des Formulars darstellt.(Siehe Abbildung \ref{fig3})
+Adobe Forms sind ähnlich unterteilt wie der Vorgänger Smart Forms. Es gibt eine Schnittstelle, in welcher definiert ist, welche Daten an das Formular übergeben werden. Zum einen sind hier die Import- und Export-Parameter für den Dokumentendruck definiert und zum anderen die tatsächlichen Daten, mit welchen das Formular gefüllt wird. Zusätzlich wird noch die Möglichkeit gegeben, die Daten mit Hilfe von \ac{ABAP}-Code bei der Initialisierung der Dokumentenerstellung anzupassen.
 
-\begin{figure}[!h]
-	\centering
-	\makebox[\textwidth][c]{\includegraphics[width=1\textwidth]{img/Smartforms-trennung.png}}%
-	
-	\caption{Trennung von Daten und Formular}
-	\label{fig3}
-	
-\end{figure} 
+Neben der Schnittstelle gibt es noch das eigentliche Formular. Jedes Formular muss einer Schnittstelle zugewiesen sein. Nur dann sind die in der Schnittstelle definierten Felder benutzbar. Hier ist zu beachten, dass mehrere Formulare die selbe Schnittstelle nutzen können.
 
+Im Formular wird zuerst ausgewählt, welchen Anteil der Daten, der in der Schnittstelle hinterlegt ist, im Dokument verwendet wird und unter welchen Bedingungen diese ausgegeben werden. Erste Eigenschaften der Felder im Dokument müssen schon hier bestimmt werden wie beispielsweise, ob das Feld aktiv ist oder nicht.
 
-\subsection{Adobe PDF}
+Beim Aktivieren des Formulars wird im Hintergrund ein Funktionsbaustein erstellt, welcher die Schnittstelle zwischen der Datenbeschaffung und Ausgabe des Formulars darstellt. Ein Funktionsbaustein ist ein in sich selbst abgeschlossenes Teilprogramm, welches mit oder ohne Input-Parameter ausgeführt werden kann. Dieser ist vor allem für Funktionen hilfreich, welche oft in verschiedenen Situationen in SAP genutzt werden.
 
-Seit 15 Jahren arbeitet SAP nun schon mit Adobe zusammen um die nächste Art der Dokumentenerstellung im SAP voran zubringen: Interactive Adobe Forms
+       
 
 
 \section{Langzeit-Lieferantenerklärung}
 
- Lieferantenerklärungen (LE) sind Dokumente, welche bei einer Lieferung Auskunft bezüglich der Präferenzursprungseigenschaft beinhaltender Waren gibt. Diese Angaben werden bei verschiedenen Zollprozessen benötigt. Grundsätzlich wird die Lieferantenerklärung bei Warenbewegungen innerhalb der \ac{EU} verwendet. Die \ac{LLE}, welche als Beispiel-Dokument für diese Arbeit benutzt wird, ist eine einmalige Erklärung welche für gleiche Lieferungen über einen maximalen Zeitraum von 2 Jahren gilt.\footcite{ZOLL.2017} 2016 erstellte ABB alleine in Deutschland dieses Dokument 1800 mal.\footnote{Nach Internen Auswertungen} Text und Aufbau der \ac{LLE} sind vorgegeben. Dementsprechend wird in der folgenden Arbeit nur auf die technische Umsetzung selbigen eingegangen.
+ Lieferantenerklärungen (LE) sind Dokumente, welche bei einer Lieferung Auskunft bezüglich des Herkunftslandes beinhaltender Waren gibt. Diese Angaben werden bei verschiedenen Zollprozessen benötigt. Grundsätzlich wird die \ac{LE} bei Warenbewegungen innerhalb der \ac{EU} verwendet. Die \ac{LLE}, welche als Beispiel-Dokument für diese Arbeit benutzt wird, ist eine einmalige Erklärung welche für gleiche Lieferungen über einen maximalen Zeitraum von 2 Jahren gilt.\footcite{ZOLL.2017} 2016 erstellte ABB alleine in Deutschland dieses Dokument 1800 mal.\footnote{Nach Internen Auswertungen} Text und Aufbau der \ac{LLE} entsprechen gesetzlichen Vorgaben. Dementsprechend wird in der folgenden Arbeit nur auf die technische Umsetzung der selbigen eingegangen.

@@ -58,10 +58,10 @@
 \listoffigures
 
 %	Tabellenverzeichnis
-\listoftables
+%\listoftables
 
 %	Listingsverzeichnis
- \lstlistoflistings
+% \lstlistoflistings
  
  
 
@@ -80,17 +80,22 @@
 
 %	Anleitungs-Datei anleitung.tex einziehen. Auf diese Weise sollten Sie versuchen, für jedes einzelne
 % Kapitel eine eigene Datei anzulegen und mittels input-Kommando einzuziehen.
+\input{Einleitung}
+\newpage
 \input{Grundlagen}
 \newpage
-\input{Ist-Zustand}
+\input{Ist-Analyse}
 \newpage
 \input{Soll-Zustand}
 \newpage
-\input{Umsetzung}
+\input{Entwurf}
 \newpage
-\input{Ergebnis}
+\input{Umsetzung}
+
 \newpage
 
+\input{Ausblick}
+\newpage
 
 %	Literaturverzeichnis
 \ihead{} % Neue Header-Definition
@@ -102,7 +107,7 @@
 \ihead{\appendixname~\thechapter} % Neue Header-Definition
 
 % appendix.tex einziehen
-\input{appendix}
+%\input{appendix}
 
 % Ehrenwörtliche Erklärung ewerkl.tex einziehen
 \input{ewerkl.tex}
