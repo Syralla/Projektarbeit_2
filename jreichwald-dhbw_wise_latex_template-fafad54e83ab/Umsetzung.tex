@@ -1,12 +1,68 @@
 \chapter{Umsetzung}
 
-\section{Dokument Erstellung}
-\subsection{Input}
-\subsection{Masterseiten}
-\subsection{Einzelne Felder}
+ Nachdem in dem Vorhergegangenen Kapitel der aktuelle Stand des Formulars erläutert, sowie die Anforderungen zusammengetragen wurden, wird in dem folgendem Kapitel ein Entwurf erstellt, welcher diese Anforderungen erfüllt. Anschließend wird die Umsetzung der Umstellung auf Adobe PDFs beschrieben.
 
+ \section{Technischer Entwurf}
+ 
+
+ 
+ \begin{itemize}
+ 	\item Schnittstelle
+ 	\item Formular
+ 	\item Druckprogramm
+ 	\item Migration von Smart Form -> Migration \footnote{Zitat \cite{Schmiechen.2016} S.189}
+ \end{itemize}
+
+\section{Dokument Erstellung}
+\subsection{Schnittstelle}
+	\begin{itemize}
+		\item Import
+		\item Globale Daten
+		\item Initialisierung -> Code Initialisierung -> Beschaffung von non-Sap Standard Daten da kein Druckprogramm. -> extra Logo Beschaffung AT -> Valid From Year Berechnung
+	\end{itemize}
+\subsection{Masterseiten}
+  \begin{itemize}
+  	\item Hoch/Querformat
+  	\item Follow-Up Seiten bei Tabellen -> Reihenfolge der Seiten und Nummerierung 
+  \end{itemize}
+
+\subsection{Design Seiten}
+
+	\begin{itemize}
+		\item Bindung zu Masterseiten
+	\end{itemize}
+\section{Einzelne Felder}
+	\begin{itemize}
+		\item Textfelder -> Position
+		\item Bindung von Inhalten -> Beispiel Datum
+		\item dynamische Felder -> Fließfelder -> Datum und co
+	\end{itemize}
+\section{Address Kopf}
+
+	\begin{itemize}
+		\item Inhalt über automatische Adressfeld? -> oder doch einzelne Werte?
+		\item Position -> allgemein außer oben rechts bei BJ weil da das Logo ist
+	\end{itemize}
 \section{Dynamische Anzeige}
-\subsection{Bedingtes Anzeigen von Feldern}
-\subsection{Übersetzung}
+
+	\begin{itemize}
+		\item Logoanzeige
+		\item Bedingte Anzeige über Kontext im Layout -> IF AH = Bla dann Bla
+		\item Logo Abspeicherung im System
+		
+		\item Tabellen anzeige -> Wie funktionieren Tabellen -> mehrseitige Ausgabe bei viel Inhalt
+		
+	\end{itemize}
+\section{Übersetzung}
+
+	\begin{itemize}
+		\item Übersetzung mit Standard Variante -> nicht gut weil die Zeile/Zeile Funktion nicht funktioniert
+		\item alternative -> Texte in Steuertabelle -> Nachteile: keine Fließfelder möglich bzw. nur schwer, Layout ist nicht sichergestellt bei Textänderungen
+		\item andere alternative -> doppelte/dreifache Felder in verschiedenen Sprachen -> Nachteile: Absolutes Chaos, schlechte Wartbarkeit
+	\end{itemize}
 
 \section{Ausgabe}
+
+	\begin{itemize}
+		\item Beispiel eines Drucks -> dynamische Ausgabe zeigen -> zwei verschiedene Anschreiben in den Anhang?
+	\end{itemize}
