@@ -4,45 +4,56 @@
 
  \section{Technischer Entwurf}
  
-
+ Die Schnittstelle der neuen Adobe \ac{PDF} muss die selben Daten beinhalten wie die der Smart Form.
+ Zusätzlich zu den benötigten Daten, beinhaltet die neuen Schnittstelle auch die Verarbeitung dieser Informationen in Form von \ac{ABAP}-Code. Programmteile die vorher im Formular eingebaut waren werden nun gesammelt an einer Stelle zusammengefasst um die geforderte technische Übersichtlichkeit der PDF zu gewährleisten und zukünftige Änderungen zu beschleunigen. Sollten im Rahmen der Anpassungen der neuen PDF, genauer der Standardisierung, neue Felder sowie Daten nötig sein werden diese in der neuen Schnittstelle ergänzt. 
  
- \begin{itemize}
- 	\item Schnittstelle
- 	\item Formular
- 	\item Druckprogramm
- 	\item Migration von Smart Form -> Migration \footnote{Zitat \cite{Schmiechen.2016} S.189}
- \end{itemize}
-
+ Die Erstellung der \ac{LLE} ist im SAP Standard bereits vorgesehen. Die Datenbeschaffung in Form eines Druckprogrammes ist somit ein SAP Programm welches nicht ohne weiteres angepasst werden kann. Das Programmieren eines speziellen Druckprogramms ist somit zwar nicht erforderlich, jedoch muss beim Erstellen der neuen PDF darauf geachtet werden, dass Anforderungen welche nicht durch den Standard abgedeckt sind, in der Schnittstelle bzw. im Formular erfüllt werden müssen. 
+ 
+ Das Layout sowie der Inhalt des Formulars ist vorgegeben, jedoch werden bestimmte Teile vereinheitlicht. Die Position und der Inhalt der Adressköpfe wird standardisiert anstatt weiterhin gesellschaftsspeziefisch zu sein. Des weiteren wird die Benennung aller Elemente im Dokument vereinheitlicht und eindeutig durchgeführt. Es wird vermieden Felder mit gleichen Inhalten und Eigenschaften unterschiedlich zu benennen und es wird sichergestellt das durch die Benennung die Inhalte eines Elements klar ist.
+ 
+ Eine eins zu eins Migration des Smart Form Dokumentes zu einer Adobe PDF ist zwar im SAP Standard möglich, jedoch wird davon abgesehen, da der Anpassungsaufwand nach der Migration den Aufwand für eine Neuerstellung meist übersteigt.\footnote{Vgl. \cite{Schmiechen.2016} S.189}
+ 
 \section{Dokument Erstellung}
+
+In den folgenden Abschnitten wird die Erstellung der \ac{LLE} mit Hilfe der Adobe \ac{PDF}s Schritt für Schritt erläutert. Die Abschnitte sind in der selben Reihenfolge wie die Durchführung stattgefunden hat.
 \subsection{Schnittstelle}
+
+Nachdem in der Transaktion SFP eine Schnittstelle erstellt wurde werden zunächst die Import-Parameter festgelegt. In Abbildung \ref{A}
 	\begin{itemize}
 		\item Import
 		\item Globale Daten
 		\item Initialisierung -> Code Initialisierung -> Beschaffung von non-Sap Standard Daten da kein Druckprogramm. -> extra Logo Beschaffung AT -> Valid From Year Berechnung
 	\end{itemize}
+\FloatBarrier
+\subsection{Kontext}
+\FloatBarrier
 \subsection{Masterseiten}
   \begin{itemize}
   	\item Hoch/Querformat
   	\item Follow-Up Seiten bei Tabellen -> Reihenfolge der Seiten und Nummerierung 
   \end{itemize}
 
+\FloatBarrier
 \subsection{Design Seiten}
 
 	\begin{itemize}
 		\item Bindung zu Masterseiten
 	\end{itemize}
+\FloatBarrier
 \section{Einzelne Felder}
 	\begin{itemize}
 		\item Textfelder -> Position
 		\item Bindung von Inhalten -> Beispiel Datum
 		\item dynamische Felder -> Fließfelder -> Datum und co
 	\end{itemize}
+\FloatBarrier
 \section{Address Kopf}
 
 	\begin{itemize}
 		\item Inhalt über automatische Adressfeld? -> oder doch einzelne Werte?
 		\item Position -> allgemein außer oben rechts bei BJ weil da das Logo ist
 	\end{itemize}
+\FloatBarrier
 \section{Dynamische Anzeige}
 
 	\begin{itemize}
@@ -53,6 +64,7 @@
 		\item Tabellen anzeige -> Wie funktionieren Tabellen -> mehrseitige Ausgabe bei viel Inhalt
 		
 	\end{itemize}
+\FloatBarrier
 \section{Übersetzung}
 
 	\begin{itemize}
@@ -60,7 +72,7 @@
 		\item alternative -> Texte in Steuertabelle -> Nachteile: keine Fließfelder möglich bzw. nur schwer, Layout ist nicht sichergestellt bei Textänderungen
 		\item andere alternative -> doppelte/dreifache Felder in verschiedenen Sprachen -> Nachteile: Absolutes Chaos, schlechte Wartbarkeit
 	\end{itemize}
-
+\FloatBarrier
 \section{Ausgabe}
 
 	\begin{itemize}
