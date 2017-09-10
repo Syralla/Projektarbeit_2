@@ -97,24 +97,17 @@ Für das Anschreiben der \ac{LLE} muss zunächst eine Seite erstellt werden welc
 
 \subsection{Materialliste}
 
-Hinsichtlich der Materialliste sind mehrere Schritte zu beachten.
-
-\begin{itemize}
-	\item Im Kontext-Bereich die Schleife erstellen mit den nötigen Spalteninhalten
-	\item Erstellung der Tabelle im Layout-Bereich
-	\item Datenzuweisung im Layout-Bereich
-	\item Einstellen des Seitenumbruchs der Tabelle ohne Zeilen abzuschneiden
-\end{itemize}
+Für Seiten der Materialliste sind mehrere Schritte zu beachten. Zunächst gilt es die Seite, abgesehen von der tatsächlichen Liste, zu erstellen. Für die Adressdaten sowie die Verwaltungseinheit werden Felder im Fließtext verwendet. Diese Kopfdaten werden über der Liste angeordnet, konvergent zum Smart Forms Formular. Anschließend muss die Materialliste erstellt werden. Hierfür muss zunächst, ähnlich wie bei Smart Forms, eine Schleife im Kontextbereich des Formulars definiert werden. Über diese Schleife ist es möglich die einzelnen Zeilen der Materialliste im Formular anzuzeigen. Im Layoutbereich wird anschließend die Liste erstellt mit einer Kopfzeile, welche die Spaltenbezeichnungen beinhaltet. Abschließend muss die Seite der Matierialliste in einer Weise konfiguriert werden, dass bei einer längeren Liste die Tabelle auf die nächste Seite umgebrochen wird. Hiebei darf kein Umbruch innerhalb einer Zeile möglich sein. Des Weiteren muss jede benötigte Folgeseite ebenfalls die Kopfdaten sowie die Kopfzeile der Materialliste darstellen. Ein Element für die Anzeige der Seitenanzahl wird am unteren Ender der Seite eingefügt. Nach der letzten Listenseite muss die anschließende Formularseite eingefügt werden.
 
 \subsection{Legende}
-
+Die letzte Seite des Formulars beinhaltet die Legende\footnote{Siehe Kapitel \ref{ist:leg}}.
 Die Legende ist ein statischer Text und ist für alle Gesellschaften gleich. Daher wird der Text als Textbaustein in das Formular eingebunden, da so Änderungen zentral vorgenommen werden können. Eine Alternative zu dem Textbaustein wäre den Text direkt in das Formular in ein Textfeld zu schreiben. Dies würde dazu führen, dass für jede Änderung das Formular bearbeitet werden muss. Der Textbaustein dagegen, kann sehr schnell angepasst werden.
 
 
 
 \section{Customizing}
 
-
+Nachdem das Formular erstellt wurde wird es im Customizing jeder Gesellschaft zugeordnet\footnote{Siehe Kapitel \ref{ch:ist-aufbau}}. Somit ist die technische Umstellung auf das neue Formular abgeschlossen.
 
 
 
@@ -134,3 +127,4 @@ Es ist nur sinnvoll die Dokumentation direkt an das Formular anzufügen in SAP. 
 	
 \end{itemize}
 
+Mit Hilfe dieser Unterteilung wird das neue Formular beschrieben und erläutert.

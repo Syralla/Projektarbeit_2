@@ -1,13 +1,10 @@
 \chapter{Umsetzung}
 
- Nachdem in dem vorhergegangenen Kapitel der aktuelle Stand des Formulars erläutert und die Anforderungen zusammengetragen wurden, wird in dem folgendem Kapitel ein Entwurf erstellt, welcher diese Anforderungen erfüllt. Anschließend wird die Umsetzung der Umstellung auf Adobe \ac{PDF}s beschrieben.
 
 
  
-\section{Dokument Erstellung}
 
-In den folgenden Abschnitten wird die Erstellung der \ac{LLE} mit Hilfe der Adobe \ac{PDF}s Schritt für Schritt erläutert. Die Abschnitte sind in der selben Reihenfolge gegliedert wie die Durchführung stattgefunden hat.
-\subsection{Schnittstelle}
+\section{Schnittstelle}
 
 Nachdem in der Transaktion SFP eine Schnittstelle erstellt wurde, werden zunächst die Import-Parameter festgelegt. Die Import Parameter geben an, welche Daten das Druckprogramm an das Formular übergibt. Im Fall der \ac{LLE} sind diese Parameter vom SAP Standard vorgegeben.
 Diese Daten beinhalten die Druckparameter, sowie die Informationen, welche den Inhalten des Formulars bestimmen. 
@@ -29,11 +26,65 @@ In diesem Bereich der Schnittstelle ist es ebenfalls möglich, die Daten aus den
 Im Fall der \ac{LE} ist die Schnittstelle mit den Globalen Daten und der Code-Initialisierung vollständig. Für andere Formulare gäbe es noch die Möglichkeit, dedizierte Währungsfelder zu definieren. Diese Variablen können den beinhaltenden Wert in jeder gewünschten Währung anzeigen.\footnote{Vgl. \cite{Hauser.2015} S. 138}
 Die Schnittstelle kann auch zu späteren Zeitpunkten angepasst werden, falls zusätzliche Variablen benötigt werden oder weitere Logiken in die Initialisierung eingebaut werden müssen.
 \FloatBarrier
-\subsection{Kontext}
+\section{Formular}
+\subsection{Allgemein}
+
 
 Nach dem Erstellen der Schnittstelle wird das Formular in der Transaktion SFP angelegt. Im Anlageprozess muss unter anderem die zugehörige Schnittstelle angegeben werden. Wie bereits in Kapitel \ref{ch:Aufbau} erläutert, besteht ein Formular im Form Builder aus dem Kontext und dem Layout. Im ersten Teil wird festgelegt, welche der Import- und Globalen-Daten im Layout Bereich für das Dokument zu Verfügung stehen sollen. Zusätzlichen zu diesen Informationen kann die Datenhierarchie bestimmte Bausteine für Texte sowie Adressen beinhalten. Weitere benutzbare Funktionen wie beispielsweise eine Schleifenfunktion dienen dazu, die übertragenen Daten aus der Schnittstelle darzustellen.
 
 Um zu vermeiden, dass Daten und Variablen ungenutzt im Kontext miteinbezogen werden, ist eine gute Vorgehensweise, den Kontext nach Bedarf in mehreren Iterationen mit benötigten Elementen aufzufüllen.
+
+\subsection{Anschreiben der \acs{ABB}}
+\subsection{Anschreiben der \acs{LLE}
+	
+	
+		
+	Im Fall der \ac{LLE} gibt es verschiedenen Informationen welche im Adresskopf angezeigt werden müssen. Ein Block beinhaltet neben den Kontaktdaten zusätzlich noch weitere Informationen zum Dokument, wie beispielsweise der \ac{LLE}-Nummer. Eine anderer Teil des Adresskopfes besteht nur aus dem Standard Name/Straße/Ort Block.
+	Für die individuellen Adressfelder wird die Methode mit den Fließfeldern angewandt. In Abbildung \ref{figAdr}
+	ist zu sehen, dass so die Anforderungen am besten umgesetzt werden können.
+	
+	\begin{figure}[ht]
+		\centering
+		\makebox[\textwidth][c]{\includegraphics[width=1\textwidth]{img/Adr.png}}%		
+		\caption{Adresskopf mit Fließfeldern}
+		\label{figAdr}
+		
+	\end{figure}
+	
+	Für den Standardadresskopf wird die Adressknoten Variante verwendet. Somit wird zunächst im Kontextbereich ein Adressknoten erstellt, welcher die Adressnummer der zugehörigen Adresse beinhaltet. Zusätzlich wird eine Variable angegeben, welche das Absender Land beinhaltet, da davon das Ausgabelayout abhängig ist.
+	
+	Die Position der Adressköpfe wird festgelegt und ist für jede Gesellschaft gleich. Diese Vereinheitlichung führt zu einer höheren Übersichtlichkeit des Formulars bei zukünftigen Anpassungen. Der Inhalt der Adressen ist ebenfalls ein Zusammenschluss der vielfachen Varianten der früheren Version des Dokumentes.
+	
+	
+	\FloatBarrier
+\subsection{Materialliste}
+
+
+
+
+Für die Materialliste wird zunächst der Kontextbereich des Formulars erweitert. Es wird ein Knotenpunkt in Form eines Ordners erstellt, welcher die Elemente der Tabelle beinhalten soll. In diesem Ordner wird anschließend eine Schleife angelegt. Im Fall der \ac{LLE} soll jeder Eintrag der Materialliste im Layout angezeigt werden. Demnach wird in der angelegten Schleife die Materialliste angegeben. Innerhalb der Schleife wird dann eine Zeile dieser Tabelle als Struktur eingetragen. Diese Zeile wird beim erstellen des Formulars mit jedem Eintrag der Materialliste gefüllt. Zusätzlich wird eine Programmknoten in die Schleife eingefügt. Dieser \ac{ABAP}-Code wird ebenfalls bei jedem Durchlauf der Schleife erneut ausgeführt. Diese Programmlogik wird benötigt um Teile der Materialliste für die Darstellung auf dem Formular aufzubereiten.
+
+Nachdem der Kontext Bereich angepasst wurde, wird anschließend die Tabelle im Layout eingebaut. Zunächst wird mit Hilfe des Tabellen-Assistenten des \ac{ALCD} eine Tabelle mit 7 Spalten erstellt. Diese Tabelle wird in einem Teilformular umschlossen. Anschließend wird in der Objekt Palette der Tabelle der Seitenumbruch freigegeben. Des Weiteren wird in der Palette der Kopfzeile eingestellt, dass der Kopf auf jeder umgebrochenen neuen Seite erneut angezeigt werden soll. Um einen Seitenumbruch in Mitten einer Zeile zu vermeiden, wird für die Zeilen ein Umbruch in der Palette nicht erlaubt. 
+
+Nachdem noch weitere Layout Einstellungen, wie Zeilenhintergründe und Größe, vorgenommen wurden, wird anschließend der Inhalt der Tabelle festgelegt. Wie in Abbildung \ref{figTab} zu sehen ist, werden die Daten der Tabelle ebenfalls mit Fließfeldern abgebildet. Aufgrund der vorher festgelegten Schleife wird somit für jeden Eintrag der Materialliste eine neue Zeile ausgegeben.
+
+\begin{figure}[ht]
+	\centering
+	\makebox[\textwidth][c]{\includegraphics[width=1\textwidth]{img/Tabelle.png}}%		
+	\caption{Materialliste mit Fließfeldern}
+	\label{figTab}
+	
+\end{figure}
+
+Um das Layout der Seiten nach einem Umbruch festlegen zu können, wird abschließend in der Objekt-Palette der Seite festgelegt, welche Masterseite für diese Seiten benutzt werden soll. Ansonsten würde die Tabelle auf einer leeren neuen Seite umformatiert weitergeführt werden.
+
+\FloatBarrier
+\subsection{Legende}
+
+
+\section{Abschluss der Umstellung}
+
+
 
 
 \FloatBarrier
@@ -80,48 +131,9 @@ Ein solches Fließfeld wird dementsprechend in den Text eingefügt. Über die Ob
 
 
 \FloatBarrier
-\section{Address Kopf}
-
-Um die vielfachen Adressen in der \ac{LLE} darzustellen gibt es mehrere Möglichkeiten. Die Bibliothek des \ac{ALCD} beinhaltet zwar einen vorkonfigurierten Adressblock, allerdings ist dieser beschränkt auf ein bestimmtes Layout.  Eine andere Möglichkeit ist es, für jeden Adressblock die Felder als Fließfelder anzugeben. Somit besteht keine Beschränkung bezüglich Inhalt und Layout. Alternativ ist es möglich im Kontext Bereich einen sogenannte Adressknoten anzulegen. Diesem Knoten wird eine Adressnummer zugewiesen. Über diese Nummer werden automatisch aus der Datenbank die Adressdaten ausgelesen\footnote{SAP Standard Variante zur Adressenverwaltung}. Diesen Adressknoten kann man im Layout des \ac{ALCD} direkt im Dokument verwenden. Mit Hilfe von Einstellungen, welche man im Kontext Bereich vornehmen kann, wird der Inhalt des Adressblocks gesteuert. Diese Variante eignet sich am besten für standardisierte Adressköpfe.
-
-Im Fall der \ac{LLE} gibt es verschiedenen Informationen welche im Adresskopf angezeigt werden müssen. Ein Block beinhaltet neben den Kontaktdaten zusätzlich noch weitere Informationen zum Dokument, wie beispielsweise der \ac{LLE}-Nummer. Eine anderer Teil des Adresskopfes besteht nur aus dem Standard Name/Straße/Ort Block.
-Für die individuellen Adressfelder wird die Methode mit den Fließfeldern angewandt. In Abbildung \ref{figAdr}
-ist zu sehen, dass so die Anforderungen am besten umgesetzt werden können.
-
-\begin{figure}[ht]
-	\centering
-	\makebox[\textwidth][c]{\includegraphics[width=1\textwidth]{img/Adr.png}}%		
-	\caption{Adresskopf mit Fließfeldern}
-	\label{figAdr}
-	
-\end{figure}
-
-Für den Standardadresskopf wird die Adressknoten Variante verwendet. Somit wird zunächst im Kontextbereich ein Adressknoten erstellt, welcher die Adressnummer der zugehörigen Adresse beinhaltet. Zusätzlich wird eine Variable angegeben, welche das Absender Land beinhaltet, da davon das Ausgabelayout abhängig ist.
-
-Die Position der Adressköpfe wird festgelegt und ist für jede Gesellschaft gleich. Diese Vereinheitlichung führt zu einer höheren Übersichtlichkeit des Formulars bei zukünftigen Anpassungen. Der Inhalt der Adressen ist ebenfalls ein Zusammenschluss der vielfachen Varianten der früheren Version des Dokumentes.
 
 
-\FloatBarrier
 
-\section{Tabelle}
-
-Für die Materialliste wird zunächst der Kontext Bereich des Formulars erweitert. Es wird ein Knotenpunkt in Form eines Ordners erstellt, welcher die Elemente der Tabelle beinhalten soll. In diesem Ordner wird anschließend eine Schleife angelegt. Im Fall der \ac{LLE} soll jeder Eintrag der Materialliste im Layout angezeigt werden. Demnach wird in der angelegten Schleife die Materialliste angegeben. Innerhalb der Schleife wird dann eine Zeile dieser Tabelle als Struktur eingetragen. Diese Zeile wird beim erstellen des Formulars mit jedem Eintrag der Materialliste gefüllt. Zusätzlich wird eine Programmknoten in die Schleife eingefügt. Dieser \ac{ABAP}-Code wird ebenfalls bei jedem Durchlauf der Schleife erneut ausgeführt. Diese Programmlogik wird benötigt um Teile der Materialliste für die Darstellung auf dem Formular aufzubereiten.
-
-Nachdem der Kontext Bereich angepasst wurde, wird anschließend die Tabelle im Layout eingebaut. Zunächst wird mit Hilfe des Tabellen-Assistenten des \ac{ALCD} eine Tabelle mit 7 Spalten erstellt. Diese Tabelle wird in einem Teilformular umschlossen. Anschließend wird in der Objekt Palette der Tabelle der Seitenumbruch freigegeben. Des Weiteren wird in der Palette der Kopfzeile eingestellt, dass der Kopf auf jeder umgebrochenen neuen Seite erneut angezeigt werden soll. Um einen Seitenumbruch in Mitten einer Zeile zu vermeiden, wird für die Zeilen ein Umbruch in der Palette nicht erlaubt. 
-
-Nachdem noch weitere Layout Einstellungen, wie Zeilenhintergründe und Größe, vorgenommen wurden, wird anschließend der Inhalt der Tabelle festgelegt. Wie in Abbildung \ref{figTab} zu sehen ist, werden die Daten der Tabelle ebenfalls mit Fließfeldern abgebildet. Aufgrund der vorher festgelegten Schleife wird somit für jeden Eintrag der Materialliste eine neue Zeile ausgegeben.
-
-\begin{figure}[ht]
-	\centering
-	\makebox[\textwidth][c]{\includegraphics[width=1\textwidth]{img/Tabelle.png}}%		
-	\caption{Materialliste mit Fließfeldern}
-	\label{figTab}
-	
-\end{figure}
-
-Um das Layout der Seiten nach einem Umbruch festlegen zu können, wird abschließend in der Objekt-Palette der Seite festgelegt, welche Masterseite für diese Seiten benutzt werden soll. Ansonsten würde die Tabelle auf einer leeren neuen Seite umformatiert weitergeführt werden.
-
-\FloatBarrier
 \section{Dynamische Anzeige}
 \label{ch:Dyn}
 
