@@ -31,7 +31,7 @@
 %% BITTE GEBEN SIE HIER DEN TITEL UND DIE AUTORIN / DEN AUTOR DER ARBEIT AN!
 %% DIESE INFORMATIONEN _MÜSSEN_ GESETZT SEIN, UM TITELBLATT, ABSTRACT UND 
 %% EIGENSTÄNDIGKEITSERKLÄRUNG AUTOMATISCH ANZUPASSEN!
-\TitelDerArbeit{Harmonisierung von gesellschaftsspeziefischen Formularen mit Interactive Forms von Adobe am Beispiel der Lieferantenerklärung im SAP GTS}
+\TitelDerArbeit{Harmonisierung von gesellschaftsspezifischen Formularen mit Interactive Forms von Adobe am Beispiel der Lieferantenerklärung im SAP GTS}
 \AutorDerArbeit{Simon Fischer}
 \Firma{ABB}
 \Kurs{WWI15AMC}
@@ -40,6 +40,7 @@
 
 \pagenumbering{Roman} % Römische Seitennummerierung
 \normalfont
+\hyphenpenalty=5000
 
 %--------------------------------
 % Verzeichnisse - nicht benötige Verzeichnisse bitte auskommentieren / löschen.
@@ -86,7 +87,8 @@
 \newpage
 \input{Ist-Analyse}
 \newpage
-
+\input{Entwurf}
+\newpage
 
 \input{Umsetzung}
 
@@ -97,15 +99,22 @@
 
 %	Literaturverzeichnis
 \ihead{} % Neue Header-Definition
-\printbibliography[title=Literaturverzeichnis]
+\pagenumbering{Roman}
+\setcounter{page}{7}
+\printbibliography[title=Quellenverzeichis]
 \cleardoublepage
+
+
+\newgeometry{top = 10mm}
 
 % Der Anhang beginnt hier - jedes Kapitel wird alphabetisch aufgezählt. (Anhang A, B usw.)
 \appendix
 \ihead{\appendixname~\thechapter} % Neue Header-Definition
 
 % appendix.tex einziehen
-%\input{appendix}
+\input{appendix}
+
+
 
 % Ehrenwörtliche Erklärung ewerkl.tex einziehen
 \input{ewerkl.tex}
