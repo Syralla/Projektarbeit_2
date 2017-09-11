@@ -61,7 +61,7 @@
 	
 	\section{Schnittstelle in Smart Forms}
 	
-	Die Daten, welche zum Füllen der \ac{LLE} erforderlich sind, werden über eine Schnittstelle an das Formular übertragen. Diese Schnittstelle wird in Smart Forms definiert und besteht aus Import- und Export-Parametern, Tabellen und Ausnahmen. Die Import- beziehungsweise Export-Parameter beinhalten die Parameter, welche Daten dem Formular zur Verfügung stellen bzw. Daten von dem Formular aus zurück an das Druckprogramm zurückgeben\footnote{Vgl. \cite{Hertleif.2003} S. 169 - 173}. Im Falle der \ac{LLE} beinhaltet die Schnittstelle neben den Standard-Parametern zwei Standard-SAP-Strukturen bei den Import-Parametern. Diese beinhalten alle benötigten Daten, welche für die \ac{LLE} relevant sind. Diese Strukturen müssen ebenfalls in der Schnittstelle des neuen Formulars vorhanden sein. Mit Hilfe der Ausnahmen in der Schnittstelle werden Fehler definiert, welche beim Auftreten zu keinem Programmabbruch führen sollen. Im Zusammenhang zur \ac{LLE} sind keine weiteren Ausnahmen definiert.    
+	Die Daten, welche zum Füllen der \ac{LLE} erforderlich sind, werden über eine Schnittstelle an das Formular übertragen. Diese Schnittstelle wird in Smart Forms definiert und besteht aus Import- und Export-Parametern, Tabellen und Ausnahmen. Die Import- beziehungsweise Export-Parameter beinhalten die Parameter, welche Daten dem Formular zur Verfügung stellen beziehungsweise Daten von dem Formular aus zurück an das Druckprogramm zurückgeben\footnote{Vgl. \cite{Hertleif.2003} S. 169 - 173}. Im Falle der \ac{LLE} beinhaltet die Schnittstelle neben den Standard-Parametern zwei Standard-SAP-Strukturen bei den Import-Parametern. Diese beinhalten alle benötigten Daten, welche für die \ac{LLE} relevant sind. Diese Strukturen müssen ebenfalls in der Schnittstelle des neuen Formulars vorhanden sein. Mit Hilfe der Ausnahmen in der Schnittstelle werden Fehler definiert, welche beim Auftreten zu keinem Programmabbruch führen sollen. Im Zusammenhang zur \ac{LLE} sind keine weiteren Ausnahmen definiert.    
 	\section{Globale Definitionen}
 	
 	Nicht alle benötigten Daten für das Formular können über Standard-SAP-Strukturen in der Schnittstelle bereitgestellt werden. Hierfür können Globale Definitionen erstellt werden, welche im gesamten Formular zur Verfügung stellen. Neben tatsächlichen Daten-Strukturen ist es, unter anderem, möglich Programmroutinen für die Initialisierung des Dokumentes einzufügen, sowie Formroutinen\footnote{Vgl. \cite{Hertleif.2003} S. 176}. Für die \ac{LLE} sind diverse Globale Daten definiert, welche im Formular an verschiedenen Stellen Anwendung finden. Ein großer Teil dieser Daten ist für das Auslesen von zusätzlichen Informationen aus dem SAP System da. Definitionen, welche im neuen Formular unvermeidlich sind, müssen übernommen werden.
@@ -110,15 +110,16 @@
 	\subsection{Adressköpfe}
 	\label{ist:adr}
 	
-	Das Anschreiben der \ac{LLE} beinhaltet drei verschiedene Adressköpfe. Einen für die Empfängeradresse, einen für die Adresse der Gesellschaft, welche die \ac{LLE} erstellt hat, sowie einen Adresskopf für den Mitarbeiter dieser Gesellschaft. Je nach Gesellschaft unterscheiden sich die Adressfelder im Inhalt beziehungsweise in der Position im Formular. Die Position kann hierbei vereinheitlicht werden, da sie sich im Smart Forms Formular nur geringfügig unterscheidet und somit die Änderungen nicht sichtbar sein werden. 
+	Das Anschreiben der \ac{LLE} beinhaltet drei verschiedene Adressköpfe. Einen für die Empfängeradresse, einen für die Adresse der Gesellschaft, welche die \ac{LLE} erstellt hat, sowie einen Adresskopf für den Mitarbeiter dieser Gesellschaft. Je nach Gesellschaft unterscheiden sich die Adressfelder im Inhalt beziehungsweise in der Position im Formular. Die Position kann hierbei vereinheitlicht werden, da sie sich im Smart Forms-Formular nur geringfügig unterscheidet und somit die Änderungen nicht sichtbar sein werden. 
 	
 	Teilweise können in Smart Forms Adressen als Textelemente dargestellt werden, welche über eine zugewiesene Adressnummer automatisch die zugehörigen Daten in einer definierbaren Struktur ausgeben. In Abbildung \ref{auto} ist die Definition eines solchen Feldes dargestellt. Die Adressnummer ist eine eindeutige Kennung für einen, im SAP System hinterlegten, Adressendatensatz.
 			\begin{figure}[ht]
-		\centering
-		\makebox[\textwidth][c]{\includegraphics[width=9cm]{img/auto_adress.png}}	
-		\caption{Unterschiedliche Versionen der Logo-Einbindung in Smart Forms}
-		\label{auto}
-	\end{figure} 
+			\centering
+			\makebox[\textwidth][c]{\includegraphics[width=9cm]{img/auto_adress.png}}	
+			\caption{Automatischer Adresskopf in Smart Forms}
+			\label{auto}
+		\end{figure} 
+	\FloatBarrier
 	
 	 Der Adressblock für die Empfängerdaten beinhaltet einen automatisch erstellen Adresskopf und Zusatzdaten in Form von einem Ansprechpartner sowie der Lieferanten Nummer. Über dem Adresskopf des Empfängers befindet sich die Absenderadresse in einer kleineren Version. Dieses Element ist für alle Gesellschaften gleich, außer für die \ac{AH} 2000, welche für die Firma \ac{BJE} steht.Für diese Gesellschaft besteht dieses Feld an derselben Position. Jedoch beinhaltet das Element nicht nur die Absenderadresse, sondern zusätzlich noch die Empfängerdaten, welche für alle anderen Gesellschaften in dem, vorher erwähnten, separaten Element angelegt sind. Eine Möglichkeit der Harmonisierung ist somit gegeben, da es inhaltlich keine Unterschiede unter den Gesellschaften gibt.
 	
@@ -133,7 +134,7 @@
 	
 	Für die \ac{AH}-Nummern 0050, 0051 und 0053 existiert noch ein weiteres Element mit dem Namen "`RUECK Neues Fenster 1"'. Dieses Feld beinhaltet eine Erinnerung an den Empfänger, dass dieses Dokument nur an die Abteilung des Absenders zurück geschickt werden darf. Um den gleichen Inhalt im neuen Formular beizubehalten muss dieses Element auch im neuen Dokument vorhanden sein.
 	
-	Des Weiteren 
+	Des Weiteren verwenden zwei Gesellschaften Fußzeilen, welche ebenfalls in das neue Formular übertragen werden müssen. Eingebunden sind diese beiden Texte über Textbausteine, welche die Fußzeilen beinhalten.
 	
 	\subsection{Zweite Anschreiben Seite}
 	
@@ -149,7 +150,7 @@
 	\subsection{Anschreiben der \acs{LE}}
 	\label{ist:le}
 	
-	Zusätzlich zum Anschreiben der ABB gibt es noch ein Anschreiben, welches inhaltlich vom Zoll vorgegeben ist. Dieser Text beschreibt die Bedeutung des Dokumentes und bildet die tatsächliche "`Erklärung"' in der \ac{LLE}. Der Unterordner "`PREF Formulare 1"' im Anhang \ref{AN:Smart3} beinhaltet die Elemente dieser Seite. Zum einen beinhaltet der Ordner den vorgegebenen Zolltext und eine Logik für die Seitenzahlen und zum anderen ein Element, welches dynamische Inhalte des Textes füllt. Zu diesen dynamischen Inhalten gehören Angaben zum Datum, sowie Adress- bzw. Kontakt-Daten. Der Knoten "`DATEN ERMITTELN"' beinhaltet ein selbstgeschriebenes Programm, welches die Daten für den folgenden Teil der \ac{LLE} aufbereitet. Da die komplette Seite unabhängig von den Gesellschaften ist, bietet sich die Möglichkeit diese in das neue Formular zu übernehmen. 
+	Zusätzlich zum Anschreiben der ABB gibt es noch ein Anschreiben, welches inhaltlich vom Zoll vorgegeben ist. Dieser Text beschreibt die Bedeutung des Dokumentes und bildet die tatsächliche "`Erklärung"' in der \ac{LLE}. Der Unterordner "`PREF Formulare 1"' im Anhang \ref{AN:Smart3} beinhaltet die Elemente dieser Seite. Zum einen beinhaltet der Ordner den vorgegebenen Zolltext und eine Logik für die Seitenzahlen und zum anderen ein Element, welches dynamische Inhalte des Textes füllt. Zu diesen dynamischen Inhalten gehören Angaben zum Datum, sowie Adress- beziehungsweise Kontaktdaten. Der Knoten "`DATEN ERMITTELN"' beinhaltet ein selbstgeschriebenes Programm, welches die Daten für den folgenden Teil der \ac{LLE} aufbereitet. Da die komplette Seite unabhängig von den Gesellschaften ist, bietet sich die Möglichkeit diese in das neue Formular zu übernehmen. 
 	
 	\subsection{Materialliste}
 	
@@ -185,9 +186,9 @@
 		Die Grundanforderung an das neue Formular ist, dass zum Ende der Arbeit inhaltlich dasselbe Dokument, auf Basis der Interactive Forms, ausgedruckt wird, wie mit Smart Forms. Optisch sollte kein Unterschied für die operativen Einheiten zu erkennen sein. Des Weiteren ist es sehr wichtig, dass die Fachbereiche nicht beeinträchtigt werden durch Einarbeitungszeit oder längere Umstellungsprozesse. 
 	
 		Gesellschaftsspezifische Inhalte, wie beispielsweise Logos, sollen weiterhin dynamisch angedruckt werden.
-		Die Adressfelder, welche in dem Smart Forms Formular unterschiedlich sind, werden vereinheitlicht, um das Dokument technisch gesehen übersichtlicher zu gestalten. Trotz der Harmonisierung sollen weiterhin alle Daten angezeigt werden, die aktuell auf dem Formular stehen. 
+		Die Adressfelder, welche in dem Smart Forms-Formular unterschiedlich sind, werden vereinheitlicht, um das Dokument technisch gesehen übersichtlicher zu gestalten. Trotz der Harmonisierung sollen weiterhin alle Daten angezeigt werden, die aktuell auf dem Formular stehen. 
 		
-		Um zukünftige Änderungen am Formular zu vereinfachen, müssen alle Elemente und Komponenten der Adobe \ac{PDF} kongruent und leicht verständlich benannt sein. Wird bei der Erstellung des Formulars kein System verfolgt, kann es dazu führen, dass erneut ein erhöhter Einarbeitungsaufwand erforderlich wird.
+		Um zukünftige Änderungen am Formular zu vereinfachen, müssen alle Elemente und Komponenten der Adobe \ac{PDF} kongruent und leicht verständlich benannt sein. Wird bei der Erstellung des Formulars kein System verfolgt, kann es dazu führen, dass erneut ein erhöhter Einarbeitungsaufwand erforderlich wird. Bis vor kurzem bestand die \ac{LLE} noch aus zwei Teilen welche nun zusammengeführt wurden. Solche Änderungen sind auch in der Zukunft zu erwarten. Des Weiteren können Änderungen im Branding einer Gesellschaft zu großem Änderungsaufwand führen, solange das Formular weiterhin in einem so komplexen Zustand verwendet wird. Änderungen seitens der Texte innerhalb der \ac{LLE} sind ebenfalls möglich. Ein Beispiel ist hierfür das neue Freihandelsabkommen mit Kanada welches seit neustem Teil der Legende ist\footnote{Vgl. \cite{ZOLL.2017b}}.
 		
 		Für die \ac{LE} ist es nicht von Nöten, eine optimierte Art der automatischen Übersetzung der Texte zu finden, da alle nötigen Sprachen (Deutsch, Englisch und Französisch) gleichzeitig im selben Formular aufgedruckt werden. Eine Übersetzung wäre jedoch durch die Standard SAP Funktion möglich.
 		
