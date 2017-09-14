@@ -9,7 +9,7 @@
 
 ABB nutzt als \ac{ERP}-System die Standardsoftware SAP ECC \footnote{Im weiteren Text nur "`SAP"' genannt} der Firma SAP SE. Eine Standardsoftware ist ein Produkt, welches die allgemeinen Anforderungen des Nutzers - in diesem Fall \ac{ABB} - erfüllt und bei speziellen Anforderungen individuell angepasst werden kann. Die Firma SAP SE bietet verschiedene modulare Lösungen an, welche einzeln genutzt werden können. Beispiel hierfür sind die \ac{SD}-, \ac{FI}-, \ac{MM}- und \ac{HR}-Module. 
 
-SAP SE hat eigens für ihr \ac{ERP}-System die Programmiersprache \ac{ABAP} entwickelt. Grundsätzlich ist \ac{ABAP} eine Mischung aus \ac{SQL}- und Java-Befehlen. Dabei ist  die Programmiersprache so optimiert, dass effizient mit großen Datenbanken gearbeitet werden kann. In den letzten Jahrzehnten wurde \ac{ABAP} insofern weiterentwickelt, dass  seit Release 4.6 im Jahre 1999 auch objektorientiertes Arbeiten möglich ist\footnote{Vgl. \cite{Keller.2001} S.16}. Das SAP-System  ist zum größten Teil mit \ac{ABAP} programmiert, sodass Anpassungen und eigene Programme auch in \ac{ABAP} geschrieben werden müssen. 
+SAP SE hat eigens für ihr \ac{ERP}-System die Programmiersprache \ac{ABAP} entwickelt. Grundsätzlich ist \ac{ABAP} eine Mischung aus \ac{SQL}- und Java-Befehlen. Dabei ist  die Programmiersprache so optimiert, dass effizient mit großen Datenbanken gearbeitet werden kann. In den letzten Jahrzehnten wurde \ac{ABAP} insofern weiterentwickelt, das  seit Release 4.6 im Jahre 1999 auch objektorientiertes Arbeiten möglich ist\footnote{Vgl. \cite{Keller.2001} S.16}. Das SAP-System  ist zum größten Teil mit \ac{ABAP} programmiert, sodass Anpassungen und eigene Programme auch in \ac{ABAP} geschrieben werden müssen. 
 
 In dieser Arbeit wird ein Formular erstellt, welches im \ac{GTS}-Modul Anwendung findet. Dieses Modul behandelt Prozesse bezüglich gesetzlicher Kontrollen bei In- und Export und deren Zollabwicklung, sowie die in dieser Arbeit behandelte Präferenzabwicklung.
 
@@ -48,8 +48,8 @@ Beim Aktivieren des Formulars wird im Hintergrund ein Funktionsbaustein erstellt
 
 Die Erstellung eines Dokumentes findet im sogenannten Form Builder statt. Hierbei handelt es sich um ein \ac{GUI}, welches die Dokumenterstellung in zwei Teile spaltet - in Kontext und Layout. 
 
-Im Kontext-Bereich stehen die Inhalte der konfigurierten Schnittstelle zur Auswahl. Aus dieser Auswahl wird eine Datenhierarchie festgelegt. Nur diese Inhalte stehen im  Layout zur Verfügung. Sollen bestimmte Bereiche des Dokumentes nur unter definierten Bedingungen angezeigt werden, können diese Einstellungen ebenfalls im Kontext-Bereich vorgenommen werden. Bei manchen Inhalten des \ac{PDF}s gibt es Pflichtparameter, welche ausgefüllt müssen, zusätzlich zu optional einzustellenden Eigenschaften.
- Elemente des \ac{PDF}s, welche beispielsweise abhängig von der Ländersprache sind, müssen einen Wert für die zu verwendete Sprache beinhalten. In Abbildung \ref{figAD} ist dies für das Beispiel der Adressfelder zu sehen. Bei Adressfeldern ist die Ausgabe abhängig vom Absenderland.
+Im Kontext-Bereich stehen die Inhalte der konfigurierten Schnittstelle zur Auswahl. Aus dieser Auswahl wird eine Datenhierarchie festgelegt. Nur diese Inhalte stehen im  Layout zur Verfügung. Sollen bestimmte Bereiche des Dokumentes nur unter definierten Bedingungen angezeigt werden, können diese Einstellungen ebenfalls im Kontext-Bereich vorgenommen werden. Bei manchen Inhalten des \ac{PDF} gibt es Pflichtparameter, welche ausgefüllt müssen, zusätzlich zu optional einzustellenden Eigenschaften.
+ Elemente des \ac{PDF}, welche beispielsweise abhängig von der Ländersprache sind, müssen einen Wert für die zu verwendete Sprache beinhalten. In Abbildung \ref{figAD} ist dies für das Beispiel der Adressfelder zu sehen. Bei Adressfeldern ist die Ausgabe abhängig vom Absenderland.
  
  \begin{figure}[ht]
  	\centering
@@ -62,7 +62,7 @@ Im Kontext-Bereich stehen die Inhalte der konfigurierten Schnittstelle zur Auswa
 
 Unabhängig von den Daten aus der Schnittstelle können zusätzliche Objekte wie Abbildungen und Textbausteine hinzugefügt werden. Der tatsächliche Inhalt dieser Objekte kann wiederum abhängig von den Schnittstellendaten sein. Somit bildet der Kontext-Bereich das Bindeglied zwischen den Formulardaten und dem Dokumentenlayout.\footnote{Vgl. \cite{Hauser.2015} S.145-146} 
 
-Eingebettet in das SAP \ac{GUI} ist der \ac{ALCD}. Mit Hilfe dieses Tools wird die Formularvorlage für den Druck eines Adobe \ac{PDF}s erstellt. Auf Basis der im Kontext definierten Daten wird somit das Layout des Formulars und der anzuzeigenden Inhalt festgelegt. Folgende Funktionen sind hierbei Schlüsselwerkzeuge bei der Erstellung eines Dokumentes: \footcite{Hauser.2015}
+Eingebettet in das SAP \ac{GUI} ist der \ac{ALCD}. Mit Hilfe dieses Tools wird die Formularvorlage für den Druck eines Adobe \ac{PDF} erstellt. Auf Basis der im Kontext definierten Daten wird somit das Layout des Formulars und der anzuzeigenden Inhalt festgelegt. Folgende Funktionen sind hierbei Schlüsselwerkzeuge bei der Erstellung eines Dokumentes: \footcite{Hauser.2015}
 
 \begin{itemize}
 	\item Hierarchie und Datenansicht: \\
@@ -76,7 +76,7 @@ Eingebettet in das SAP \ac{GUI} ist der \ac{ALCD}. Mit Hilfe dieses Tools wird d
 	\item Datenbindungen: \\
 		Mit Hilfe der Objekt-Palette wird Feldern eine Datenbindung zugewiesen. Über diese Bindung wird definiert, welche Daten in dem jeweiligen Feld angezeigt werden.
 	\item Felder im Fließtext: \\
-		Dynamische Inhalte, welche im Fließtext vorkommen, werden mit dieser Funktion eingefügt. Diese Felder werden beim Drucken des \ac{PDF}s gefüllt und der Fließtext wird um das Feld herum entsprechend angepasst.
+		Dynamische Inhalte, welche im Fließtext vorkommen, werden mit dieser Funktion eingefügt. Diese Felder werden beim Drucken des \ac{PDF} gefüllt und der Fließtext wird um das Feld herum entsprechend angepasst.
 	\item Tabellen: \\
 		Da die Größe von Tabellen meistens erst zum Zeitpunkt des Drucks feststeht, muss eine dynamische Ausgabe ermöglicht werden. Mit dieser Funktion können Tabellen erstellt und die Ausgaberegeln festgelegt werden.
 	\item Seitenumbrüche: \\

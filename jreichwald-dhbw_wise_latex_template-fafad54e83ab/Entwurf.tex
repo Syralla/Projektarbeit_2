@@ -30,7 +30,7 @@ Diese Gewichtung kann verwendet werden, um eine Wahl zwischen Lösungsalternativ
 \section{Automatische Migration}
 \label{ch:Migration}
 
-Marcel Schmiechen beschreibt in seinem Buch über Interaktive Formulare im SAP \footcite{Schmiechen.2016} in Kapitel 8.4 das automatische Migrationsverfahren im SAP-Standard im Vergleich zu einer Neuentwicklung als nicht lohnenswert\footnote{Vgl. \cite{Schmiechen.2016} S.189}. Dieses Verfahren bietet die Möglichkeit in kürzester Zeit ein Smart Forms-Formular in ein Interactive Adobe \ac{PDF} umzuwandeln. Jedoch kommt es gerade bei größeren Dokumenten zu Fehlern bei der Migration. Dies hat auch der Test anhand der \ac{LLE} bestätigt. Die Schnittstelle konnte fehlerfrei übernommen werden, jedoch führte die Migration zu großen Fehlern in dem Formularteil. In Abbildung \ref{Migration} ist zu sehen, dass teilweise Attribute von Elementen nicht befüllt werden konnten. In diesem Fall fehlte vor allem das Absenderland für die verwendeten Addressknoten. Zusätzlich führten lange Namen von Elementen der Smart Form zu weiteren Fehlern, da die maximale Namenslänge bei den Interactive Forms zu lange Namen abschneidet. Daraus resultiert, dass Elemente gleich benannt sind.
+Marcel Schmiechen beschreibt in seinem Buch über Interaktive Formulare im SAP \footcite{Schmiechen.2016} in Kapitel 8.4 das automatische Migrationsverfahren im SAP-Standard im Vergleich zu einer Neuentwicklung als nicht lohnenswert\footnote{Vgl. \cite{Schmiechen.2016} S.189}. Dieses Verfahren bietet die Möglichkeit in kürzester Zeit ein Smart Forms-Formular in ein Interactive Adobe \ac{PDF} umzuwandeln. Jedoch kommt es gerade bei größeren Dokumenten zu Fehlern bei der Migration. Dies hat auch der Test anhand der \ac{LLE} bestätigt. Die Schnittstelle konnte fehlerfrei übernommen werden, jedoch führte die Migration zu großen Fehlern im Formularteil. In Abbildung \ref{Migration} ist zu sehen, dass teilweise Attribute von Elementen nicht befüllt werden konnten. In diesem Fall fehlte vor allem das Absenderland für die verwendeten Addressknoten. Zusätzlich führten lange Namen von Elementen der Smart Form zu weiteren Fehlern, da die maximale Namenslänge bei den Interactive Forms zu lange Namen abschneidet. Daraus resultiert, dass Elemente gleich benannt sind.
 
 Um das Layout zu überprüfen, musste das Formular zunächst überarbeitet werden, sodass die Fehlermeldungen nicht mehr die Aktivierung des Dokumentes verhindern. Nachdem die nötigen Änderungen durchgeführt wurden, konnte das Layout überprüft werden. 
 \begin{figure}[ht]
@@ -55,14 +55,14 @@ Neben der Struktur und den Datenbindungen kam es auch bei anderen Funktionen zu 
 \section{Schnittstelle}
 
 In der Schnittstelle werden die Inhalte des Formulars, welche aus dem SAP System stammen, definiert, sowie weitere benötigte Strukturen festgelegt.\footnote{Siehe Kapitel \ref{ch:Schnittstelle}}
-Die tatsächlichen Inhalte der \ac{LLE} bleiben gleich, egal welche Technologie benutzt wird. Somit kann die Schnittstelle aus der Formularschnittstelle des Smart Forms-Formular abgeleitet werden. Für die Erstellung der Schnittstelle kann daher die SAP-Standard-Migration verwendet werden.\footnote{Siehe Kapitel \ref{ch:Migration}}
+Die tatsächlichen Inhalte der \ac{LLE} bleiben gleich, unabhängig welche Technologie benutzt wird. Somit kann die Schnittstelle aus der Formularschnittstelle des Smart Forms-Formular abgeleitet werden. Für die Erstellung der Schnittstelle kann daher die SAP-Standard-Migration verwendet werden.\footnote{Siehe Kapitel \ref{ch:Migration}}
 
 
 \section{Formular}
 
 \subsection{Allgemein}
 
-Für das Anschreiben der ABB muss eine Seite im Layout-Bereich des Formulars erstellt werden. Die Inhalte des Anschreibens sind in den folgenden Kapiteln erläutert. Allgemein muss die Schriftart und Schriftgröße aus dem Smart Forms-Formular übernommen werden. Bezüglich der Benennung der verschiedenen Objekte und Elemente gilt es sprechende, erklärende und eindeutige Namen zu verwenden. Um die dynamischen Inhalte in den statischen Text des Anschreibens einzufügen, werden Fließtextfelder benutzt\footnote{Siehe Kapitel \ref{ch:Aufbau}}\footnote{Vgl. \cite{Hauser.2015} S. 319}.
+Für das Anschreiben von ABB muss eine Seite im Layout-Bereich des Formulars erstellt werden. Die Inhalte des Anschreibens sind in den folgenden Kapiteln erläutert. Allgemein muss die Schriftart und Schriftgröße aus dem Smart Forms-Formular übernommen werden. Bezüglich der Benennung der verschiedenen Objekte und Elemente gilt es sprechende, erklärende und eindeutige Namen zu verwenden. Um die dynamischen Inhalte in den statischen Text des Anschreibens einzufügen, werden Fließtextfelder benutzt\footnote{Siehe Kapitel \ref{ch:Aufbau}}\footnote{Vgl. \cite{Hauser.2015} S. 319}.
 
 \subsection{Anschreiben - Logos}
 
@@ -83,22 +83,22 @@ Die Kontaktdaten des Mitarbeiters werden ebenfalls mit Hilfe von Feldern im Flie
 
 Das in Kapitel \ref{ist:rueck} erläuterte Info-Feld sowie die Fußzeilen müssen ebenfalls in das neue Formular übertragen werden. Für die Umsetzung gibt es zwei Möglichkeiten:
 
-\subsubsection{Text als Feld im Fließtext}
+\subsubsection{Möglichkeit 1: Text als Feld im Fließtext}
 
-Indem der anzuzeigende Text in einer Variable in der Schnittstelle eingefügt wird, kann der Text über ein Feld im Fließtext angezeigt werden. Hierfür ist es erforderlich, dass sowohl die Schnittstelle also auch das Formular angepasst werden, da der Text zunächst erst in einer Variable abgespeichert werden muss. Sollten Änderungen am Text nötig sein, müssten somit an mehreren Stellen Anpassungen vorgenommen werden. Dies steht nicht im Sinne der Optimierung des Formulars. Des Weiteren ist eine Formatierung des anzuzeigenden Textes nicht möglich, da in einer Variable nur reiner Text ohne Absatz und Schriftformatierung abgespeichert werden kann.
+Indem der anzuzeigende Text in einer Variablen in der Schnittstelle eingefügt wird, kann der Text über ein Feld im Fließtext angezeigt werden. Hierfür ist es erforderlich, dass sowohl die Schnittstelle also auch das Formular angepasst werden, da der Text zunächst erst in einer Variablen abgespeichert werden muss. Sollten Änderungen am Text nötig sein, müssten somit an mehreren Stellen Anpassungen vorgenommen werden. Dies steht nicht im Sinne der Optimierung des Formulars. Des Weiteren ist eine Formatierung des anzuzeigenden Textes nicht möglich, da in einer Variablen nur reiner Text ohne Absatz und Schriftformatierung abgespeichert werden kann.
 
-\subsubsection{Textbaustein}
+\subsubsection{Möglichkeit 2: Textbaustein}
 
 Der Inhalt wird als Textbaustein angelegt, welcher für die relevanten Gesellschaften eingelesen werden kann. Die bedingte Anzeige ist somit ersichtlich und der Text an einer genauen Stelle für eventuell nötige Anpassungen verfügbar.
 Diese Methode steht im Sinne der definierten Anforderungen\footnote{Siehe Kapitel \ref{ch:Bewertung}} und wird somit verwendet. 
 
 \subsection{Anschreiben der \acs{LLE}}
 
-Für das Anschreiben der \ac{LLE} muss zunächst eine Seite erstellt werden, welche in die Seitenzählung miteinbezogen wird. Der Text des Anschreibens kann aus dem Smart Forms-Formular übernommen werden\footnote{Siehe Kapitel \ref{ist:le}}. Hierfür ist ein Textfeld notwendig, welches mit Hilfe von Felder im Fließtext mit dynamischen Inhalten, beispielsweise Angaben zum Gültigkeitszeitraum, erweitert wird. 
+Für das Anschreiben der \ac{LLE} muss zunächst eine Seite erstellt werden, welche in die Seitenzählung miteinbezogen wird. Der Text des Anschreibens kann aus dem Smart Forms-Formular übernommen werden\footnote{Siehe Kapitel \ref{ist:le}}. Hierfür ist ein Textfeld notwendig, welches mit Hilfe von Feldern im Fließtext mit dynamischen Inhalten, beispielsweise Angaben zum Gültigkeitszeitraum, erweitert wird. 
 
 \subsection{Materialliste}
 
-Für Seiten der Materialliste sind mehrere Schritte zu beachten. Zunächst gilt es die Seite, abgesehen von der tatsächlichen Liste, zu erstellen. Für die Adressdaten sowie die Verwaltungseinheit werden Felder im Fließtext verwendet. Diese Kopfdaten werden über der Liste angeordnet, konvergent zum Smart Forms-Formular. Anschließend muss die Materialliste erstellt werden. Hierfür muss zunächst, ähnlich wie bei Smart Forms, eine Schleife im Kontextbereich des Formulars definiert werden. Über diese Schleife ist es möglich, die einzelnen Zeilen der Materialliste im Formular anzuzeigen. Im Layoutbereich wird anschließend die Liste mit einer Kopfzeile  erstellt, welche die Spaltenbezeichnungen beinhaltet. Abschließend muss die Seite der Materialliste in einer Weise konfiguriert werden, dass bei einer längeren Liste die Tabelle auf die nächste Seite umgebrochen wird. Hierbei darf kein Umbruch innerhalb einer Zeile möglich sein. Zudem muss jede benötigte Folgeseite ebenfalls die Kopfdaten sowie die Kopfzeile der Materialliste darstellen. Ein Element für die Anzeige der Seitenanzahl wird am unteren Ende der Seite eingefügt. Nach der letzten Listenseite muss die anschließende Formularseite eingefügt werden.
+Für Seiten der Materialliste sind mehrere Schritte zu beachten. Zunächst gilt es die Seite, abgesehen von der tatsächlichen Liste, zu erstellen. Für die Adressdaten sowie die Verwaltungseinheit werden Felder im Fließtext verwendet. Diese Kopfdaten werden über der Liste angeordnet, konvergent zum Smart Forms-Formular. Anschließend muss die Materialliste erstellt werden. Hierfür muss zunächst, ähnlich wie bei Smart Forms, eine Schleife im Kontextbereich des Formulars definiert werden. Über diese Schleife ist es möglich, die einzelnen Zeilen der Materialliste im Formular anzuzeigen. Im Layoutbereich wird anschließend eine Liste mit einer Kopfzeile  erstellt, welche die Spaltenbezeichnungen beinhaltet. Abschließend muss die Seite der Materialliste in einer Weise konfiguriert werden, dass bei einer längeren Liste die Tabelle auf die nächste Seite umgebrochen wird. Hierbei darf kein Umbruch innerhalb einer Zeile möglich sein. Zudem muss jede benötigte Folgeseite ebenfalls die Kopfdaten sowie die Kopfzeile der Materialliste darstellen. Ein Element für die Anzeige der Seitenanzahl wird am unteren Ende der Seite eingefügt. Nach der letzten Listenseite muss die anschließende Formularseite eingefügt werden.
 
 \subsection{Legende}
 Die letzte Seite des Formulars beinhaltet die Legende\footnote{Siehe Kapitel \ref{ist:leg}}.
